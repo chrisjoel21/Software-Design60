@@ -3,6 +3,7 @@ import './ClientProfile.css';
 
 // const ImageLinkForm =({onInputChange, onButtonSubmit}) =>{
 //const ClientProfile = ({ name, entries }) => {
+  //code me
      
     class ClientProfile extends React.Component {
         constructor(props) {
