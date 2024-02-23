@@ -14,7 +14,7 @@ class Register extends React.Component {
       email: '',
       password: '',
       name: '',
-      errors: {},
+      errors: {}
     }
   }
   
@@ -33,13 +33,16 @@ class Register extends React.Component {
   }
 
   onSubmitSignIn = (event) => {
-    
+    event.preventDefault();
+    const errors = Validation(this.state); // Call Validation function with current state
+    this.setState({ errors }); // Update errors state
+    if (Object.values(errors).every(error => error === "")) { // Check if all errors are empty
       this.props.onRouteChange('ClientProfile');
-    
+    }
   }
 
   render() {
-    
+    const { errors } = this.state;
     return (
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
         <main className="pa4 black-80">
@@ -55,7 +58,7 @@ class Register extends React.Component {
                   id="name"
                   onChange={this.onNameChange}
                 />
-               
+                {errors.name && <p className="error">{errors.name}</p>} {/* Display name error */}
               </div>
               <div className="mt3">
                 <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
@@ -66,7 +69,7 @@ class Register extends React.Component {
                   id="email-address"
                   onChange={this.onEmailChange}
                 />
-              
+                {errors.email && <p className="error">{errors.email}</p>} {/* Display email error */}
               </div>
               <div className="mv3">
                 <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
@@ -77,7 +80,7 @@ class Register extends React.Component {
                   id="password"
                   onChange={this.onPasswordChange}
                 />
-               
+                {errors.password && <p className="error">{errors.password}</p>} {/* Display password error */}
               </div>
               
             </fieldset>
