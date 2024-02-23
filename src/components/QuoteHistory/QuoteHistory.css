@@ -1,0 +1,48 @@
+/* Color Scheme */
+
+
+  
+  .bodyQuote {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:blue; /* Beige */
+    color: #000000; /* Black */
+  }
+  
+  /* Table Styles */
+  .tableQuote {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  }
+  
+  td {
+    font-size: 15px;
+    text-align: center;
+    background-color: #FFFFFF; /* White */
+    border: 2px solid #008B8B; /* Dark Cyan */
+    padding: 8px;
+  }
+  
+  th {
+    font-size: 20px;
+    background-color: #008B8B; /* Dark Cyan */
+    color: #FFFFFF; /* White */
+    text-align: left;
+    padding: 8px;
+  }
+  
+  h1 {
+    text-align: center;
+    background-color: #ADD8E6; /* Light Blue */
+    padding: 10px;
+  }
+  
+  /* Table Row Styling */
+  tr:nth-child(even) {
+    background-color: #F9F9F9; /* Light Gray */
+  }
+  
+  tr:hover {
+    background-color: #E2E2E2; /* Lighter Gray */
+  }
+  

@@ -1,0 +1,195 @@
+body{
+    margin: auto 0; 
+    display: block;
+    
+}
+.logo{
+    display: flex;
+    list-style: none;
+    font-size: 1.5em;
+    margin: 0;
+    padding: 0;
+    text-align: start;
+    background-color: #080808;
+    text-decoration: none;
+    
+    
+
+}
+@media only screen and (max-width: 600px) {
+    .logo {
+        font-size: 12px;
+        padding: 0;
+    }
+    li {
+        font-size: 12px;
+        padding: 0;
+    }
+    .push {
+        font-size: 12px;
+        padding: 0;
+    }
+    
+    
+}
+@media only screen and (max-width:400px) {
+    .logo {
+        font-size: 5px;
+        padding: 0;
+    }
+    li {
+        font-size: 5px;
+        padding: 0;
+    }
+    .push {
+        font-size: 5px;
+        padding: 0;
+    }
+    
+    
+}
+
+li{
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    
+}
+
+a{
+    color: rgb(248, 241, 241);
+    text-decoration: none;
+    
+}
+.push{
+    margin-left: auto;
+   background-color: #0b0017;
+   text-decoration: none;
+   text-decoration:  underline #ebedea;
+}
+.lo{
+    font-size:  1.5em;
+    background-color: #ba081a;
+
+}
+
+
+.ba {
+    border-style: solid;
+    border-width: 1px;
+    
+}
+
+.br1 {
+    border-radius: .125rem;
+}
+
+.bw1 {
+    border-width: .125rem;
+}
+
+.bw2 {
+    border-width: .15rem;
+}
+
+.dib {
+    display: inline-block;
+}
+
+.fw6 {
+    font-weight: 600;
+}
+
+.tracked {
+    letter-spacing: .1em;
+}
+
+.link {
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+
+.link:link, .link:visited {
+    transition: color .15s ease-in;
+}
+
+.link:hover {
+    transition: color .15s ease-in;
+}
+
+.link:active {
+    transition: color .15s ease-in;
+}
+
+.link:focus {
+    transition: color .15s ease-in;
+    outline: 1px dotted currentColor;
+}
+
+.black {
+    color: #000;
+}
+
+.near-black {
+    color: #111;
+}
+
+.dark-gray {
+    color: #333;
+}
+
+.mid-gray {
+    color: #555;
+}
+
+.white {
+    color: #fff;
+}
+
+.purple {
+    color: #5e2ca5;
+}
+
+.light-purple {
+    color: #a463f2;
+}
+
+.dark-pink {
+    color: #d5008f;
+}
+
+.hot-pink {
+    color: #ff41b4;
+}
+
+.dark-green {
+    color: #137752;
+}
+
+.navy {
+    color: #001b44;
+}
+
+.dark-blue {
+    color: #00449e;
+}
+
+.bg-black {
+    background-color: #000;
+}
+
+.bg-near-black {
+    background-color: #111;
+}
+
+.bg-dark-gray {
+    background-color: #333;
+}
+
+.bg-mid-gray {
+    background-color: #555;
+}
+
+.bg-purple {
+    background-color: #5e2ca5;
+}
