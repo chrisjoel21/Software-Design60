@@ -1,5 +1,6 @@
 /*GetQuote.js*/
 import React from 'react';
+//code
 
 class GetQuote extends React.Component {
   constructor(props) {
