@@ -20,9 +20,21 @@ class GetQuote extends React.Component {
   onSubmitSignIn = (event) => {
     event.preventDefault();
     // Handle form submission logic here
-    this.props.onRouteChange('ClientProfile');
+    this.props.onRouteChange('home');
   };
+  componentDidMount() {
+    // Set minimum date to today's date
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('deliveryDate').min = today;
 
+    // Calculate maximum date (3 years from today)
+    const maxDate = new Date();
+    maxDate.setFullYear(maxDate.getFullYear() + 3);
+    const maxDateString = maxDate.toISOString().split('T')[0];
+
+    // Set maximum date
+    document.getElementById('deliveryDate').max = maxDateString;
+}
   render() {
     const { gallonsRequested, deliveryDate } = this.state;
 
@@ -50,13 +62,17 @@ class GetQuote extends React.Component {
             <div>
               <label>Delivery Date:</label>
               <input
-                type="date"
-                id="deliveryDate"
-                name="deliveryDate"
-                value={deliveryDate}
+              type="date"
+                 id="deliveryDate"
+                 name="deliveryDate"
+                 value={deliveryDate}
+                
                 onChange={this.handleInputChange}
-                required
+                required 
+                min="today"
+
               />
+
             </div>
 
             <div>

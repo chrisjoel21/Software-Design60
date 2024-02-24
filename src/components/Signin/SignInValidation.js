@@ -1,23 +1,24 @@
-function Validation(values) {
+function SignInValidation(values) {
   let error = {};
   const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const password_pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
+  
 
-  if (values.email == "") {
-    error.email = "Name should not be empty";
-  } else if (!email_pattern.test(values.email)) {
-    error.email = "Email Didn't match";
+  if (values.signInEmail == "") {
+    error.email = "Email should not be empty";
+  } else if (!email_pattern.test(values.signInEmail)) {
+    error.email = "Email didn't match its format";
   } else {
     error.email = "";
   }
 
-  if (values.password == "") {
+  if (values.signInPassword == "") {
     error.password = "Password should not be empty";
-  } else if (!password_pattern.test(values.password)) {
-    error.password = "In Valid Password";
+  } else if (!password_pattern.test(values.signInPassword)) {
+    error.password = "Password be atleast 8 Characters, 1 Capital, atleast 1 numeric character";
   } else {
     error.password = "";
   }
   return error;
 }
-export default Validation;
+export default SignInValidation;

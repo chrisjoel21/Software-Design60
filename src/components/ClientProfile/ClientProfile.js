@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './ClientProfile.css';
-
+import ProfileValidation from './ProfileValidation';
 // const ImageLinkForm =({onInputChange, onButtonSubmit}) =>{
 //const ClientProfile = ({ name, entries }) => {
   //code me
@@ -9,7 +9,15 @@ import './ClientProfile.css';
         constructor(props) {
           super(props);
           this.state = {
-            address: '',
+            fullname:'',
+            address1:'',
+            address2:'',
+            city:'',
+            zipcode:'',
+            errors: {},
+
+
+
             states:[
                 { id: 1, name: 'Alabama', abbreviation: 'AL' },
                 { id: 2, name: 'Alaska', abbreviation: 'AK' },
@@ -78,21 +86,49 @@ import './ClientProfile.css';
     // Implement canceling logic here
     alert('Operation canceled.');
   }
-  onSubmitSignIn = () => {
-    
+  onSubmitSignIn = (event) => {
+    event.preventDefault();
+    const errors = ProfileValidation(this.state); // Call Validation function with current state
+    this.setState({ errors }); // Update errors state
+    if (Object.values(errors).every(error => error === "")) { // Check if all errors are empty
+      this.props.onRouteChange('home');
+    }
 
-    this.props.onRouteChange('home');
+  
 } 
-handleSaveAndRouteChange = () => {
-    this.saveClient();
-    this.props.onRouteChange('home');
+handleSaveAndRouteChange = (event) => {
+   // this.saveClient();
+    event.preventDefault();
+    const errors = ProfileValidation(this.state); // Call Validation function with current state
+    this.setState({ errors }); // Update errors state
+    if (Object.values(errors).every(error => error === "")) { // Check if all errors are empty
+      this.props.onRouteChange('home');
+    }
   }
-  onAddressChange = (event) => {
-    this.setState({address: event.target.value})
+  
+  onAddress1Change = (event) => {
+    this.setState({address1: event.target.value})
   }
+  
+  onAddress2Change = (event) => {
+    this.setState({address2: event.target.value})
+  }
+  onFullNameChange = (event) => {
+    this.setState({fullname: event.target.value})
+  }
+  onCityChange = (event) => {
+    this.setState({city: event.target.value})
+  }
+  onZipCodeChange = (event) => {
+    this.setState({zipcode: event.target.value})
+  }
+  onProvinceChange = (event) => {
+    this.setState({selectedState: event.target.value})
+  }
+
 
   render() {
-
+    const { errors } = this.state;
     const { onRouteChange } = this.props;
     return(
     <div>
@@ -103,32 +139,45 @@ handleSaveAndRouteChange = () => {
       <div className="container mt-4 center" >
         <form id="clientForm ">
           <label htmlFor="fullName">Full Name:</label>
-          <input type="text" id="fullName" name="fullName" maxLength="50" required />
-
+          <input onChange={this.onFullNameChange} type="text" id="fullName" name="fullName" maxLength="50" required />
+          {errors.fullname && <p className="error">{errors.fullname}</p>}{" "}
+                {/* Display email error */}    
           <label htmlFor="address1">Address 1:</label>
-          <input onChange={this.onAddressChange} type="text" id="address1" name="address1" maxLength="100" required />
-
+          <input onChange={this.onAddress1Change} type="text" id="address1" name="address1" maxLength="100" required />
+          {errors.address1 && <p className="error">{errors.address1}</p>}{" "}
+                {/* Display email error */} 
           <label htmlFor="address2">Address 2:</label>
-          <input type="text" id="address2" name="address2" maxLength="100" />
-
+          <input onChange={this.onAddress2Change} type="text" id="address2" name="address2" maxLength="100" />
+          {errors.address2 && <p className="error">{errors.address2}</p>}{" "}
+                {/* Display email error */} 
           <label htmlFor="city">City:</label>
-          <input type="text" id="city" name="city" maxLength="100" required />
-
+          <input onChange={this.onCityChange} type="text" id="city" name="city" maxLength="100" required />
+          {errors.city && <p className="error">{errors.city}</p>}{" "}
+                {/* Display email error */} 
           <label htmlFor="state">State:</label>
           <select id="state" name="state" required onChange={(e) => this.setState({ selectedState: e.target.value })}>
               <option value="" disabled selected>Select State</option>
               {this.state.states.map((state) => (
                 <option key={state.id} value={state.name}>
-                  {state.name}
+                  {state.abbreviation}
                 </option>
               ))}
             
           </select>
+          {errors.state && <p className="error">{errors.state}</p>}{" "}
+                {/* Display email error */} 
 
           <label htmlFor="zipCode">Zip Code:</label>
-          <input type="text" id="zipCode" name="zipCode" pattern="[0-9]{5,9}" title="Enter at least 5 digits" required />
-
-          <button type="button" onClick={this.handleSaveAndRouteChange} >Save</button>
+          <input onChange={this.onZipCodeChange} type="text" id="zipCode" name="zipCode" pattern="[0-9]{5,9}" title="Enter at least 5 digits" required />
+          {errors.zipcode && <p className="error">{errors.zipcode}</p>}{" "}
+                {/* Display email error */} 
+          <input
+                onClick={this.onSubmitSignIn}
+                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                type="submit"
+                value="Sign in"
+              />
+             
           <button type="button" className="cancel" onClick={this.cancel}>Cancel</button>
          
         </form>

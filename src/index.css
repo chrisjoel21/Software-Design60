@@ -4,8 +4,8 @@ body {
   font-family:'Courier New', Courier, monospace;
 
   
-  background: rgb(231, 150, 144);
-  background: radial-gradient(circle, #00e0f9 0%, #df7cb6 100%);
+  background: rgb(255,156,0);
+  background: radial-gradient(circle, rgb(241, 77, 6) 20%, rgb(181, 28, 192) 100%, rgb(211, 33, 217) 100%);
 
 
    

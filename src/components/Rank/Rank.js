@@ -11,8 +11,8 @@ const Rank = ({ name, entries }) => {
   
   </div>
 
-      <div className='white f3'>
-        {`${name} Get Quote, See HIstory with above options`}
+      <div className='white f1 pa3 pointer fw9'>
+        {`${name} Get Quote, See History with above options`}
       </div>
       <div className='white f1'>
         

@@ -1,5 +1,5 @@
 import React from "react";
-//import Validation from './SiginValidation';
+import SignInValidation from './SignInValidation.js';
 //later for the backend security
 
 class Signin extends React.Component {
@@ -21,14 +21,20 @@ class Signin extends React.Component {
   };
 
   onSubmitSignIn = (event) => {
-    this.props.onRouteChange("home");
+    event.preventDefault();
+    const errors = SignInValidation(this.state); // Call Validation function with current state
+    this.setState({ errors }); // Update errors state
+    if (Object.values(errors).every(error => error === "")) { // Check if all errors are empty
+      this.props.onRouteChange('home');
+    }
+    
   };
 
   render() {
     const { errors } = this.state;
     const { onRouteChange } = this.props;
     return (
-      <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center bg-white ">
+      <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center bg-light-pink ">
         <main className="pa4 black-80">
           <div className="measure">
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -38,7 +44,7 @@ class Signin extends React.Component {
                   Email
                 </label>
                 <input
-                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  className="pa2 ba b--black input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="email"
                   name="email-address"
                   id="email-address"
@@ -52,7 +58,7 @@ class Signin extends React.Component {
                   Password
                 </label>
                 <input
-                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  className="b ba b--black pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="password"
                   name="password"
                   id="password"
